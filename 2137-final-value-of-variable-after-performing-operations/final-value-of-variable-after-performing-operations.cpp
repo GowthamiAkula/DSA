@@ -1,17 +1,14 @@
 class Solution {
 public:
     int finalValueAfterOperations(vector<string>& operations) {
-        int x=0;
-        for(int i=0;i<operations.size();i++)
+        int ans = 0;
+        for(string x:operations)
         {
-            if(operations[i]=="++X" || operations[i]=="X++")
-            {
-                x += 1;
-            }
-            else{
-                x -= 1;
-            }
+            if(x=="++X" || x=="X++")
+            ans +=1;
+            else
+            ans -= 1;
         }
-        return x;
+        return ans;
     }
 };
