@@ -1,17 +1,20 @@
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
-        unordered_map<int,int>freq;
-        for(int n:nums)
-        freq[n]++;
-        int dup = 0, miss = 0;
-        for(int i=1;i<=nums.size();i++)
+        unordered_map<int,int>mp;
+        int n=nums.size();
+        vector<int>ans;
+        for(int x:nums)
         {
-            if(freq[i]==2)
-            dup = i;
-            else if(freq[i]==0)
-            miss = i;
+            mp[x]++;
+            if(mp[x]>1)
+            ans.push_back(x);
         }
-        return {dup,miss};
+        for(int i=1;i<=n;i++)
+        {
+            if(find(nums.begin(),nums.end(),i)==nums.end())
+            ans.push_back(i);
+        }
+        return ans;
     }
 };
